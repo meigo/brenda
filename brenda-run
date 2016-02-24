@@ -102,6 +102,9 @@ Examples:
 
     parser.add_option("-c", "--config", dest="config", default=defconf,
                       help="Configuration file (default: %default)")
+					  
+    parser.add_option("-s", "--subnet", dest="subnet",
+                      help="EC2 subnet name, overrides config variable SUBNET")					  
 
     parser.add_option("-a", "--ami", dest="ami",
                       help="AMI ID to use when starting EC2 instances, overrides config variable AMI_ID"+aws.get_default_ami_with_fmt(", default=%s"))

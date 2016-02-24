@@ -57,6 +57,7 @@ def demand(opts, conf):
         print reservation
 
 def spot(opts, conf):
+    subnet = utils.get_opt(opts.subnet, conf, 'SUBNET', must_exist=False)
     ami_id = utils.get_opt(opts.ami, conf, 'AMI_ID', default=AMI_ID, must_exist=True)
     price = utils.get_opt(opts.price, conf, 'BID_PRICE', must_exist=True)
     reqtype = 'persistent' if opts.persistent else 'one-time'
@@ -79,6 +80,7 @@ def spot(opts, conf):
         'key_name'      : ssh_key_name,
         'security_groups' : sec_groups,
         'block_device_map' : bdm,
+        'placement' : subnet
         }
 
     print "----------------------------"
